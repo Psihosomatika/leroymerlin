@@ -40,8 +40,21 @@ const obj =
             }
         }
     },
-    "productName": 
+   // "productName": this.displayedName["displayedName"]["value"],
+   "productName": function(){
+       return this['displayedName']["displayedName"]["value"][0];
+    },
+    "listOfStores": function() {
+        return Object.keys(this["stock"]["stocks"]["34"]);
+    },
+    "maxProduct": function() {
+
+    }
 }
+const a = obj["listOfStores"]();
+console.log(a);
+
+
 /*
 stocks - остатки товара в регионе,
 34 - номер региона,
