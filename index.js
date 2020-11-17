@@ -40,7 +40,6 @@ const obj =
             }
         }
     },
-   // "productName": this.displayedName["displayedName"]["value"],
    "productName": function(){
        return this['displayedName']["displayedName"]["value"][0];
     },
@@ -48,21 +47,20 @@ const obj =
         return Object.keys(this["stock"]["stocks"]["34"]);
     },
     "maxProduct": function() {
-
+        let maximumNumber = 0;
+        let numberStock = 0;
+        const shops = this["stock"]["stocks"]["34"];
+        for(let keys in shops){
+            if (maximumNumber < Number(shops[keys])){
+                maximumNumber = Number(shops[keys]);
+                numberStock = keys;
+            };
+        };
+        const shopObj = {};
+        shopObj[`${numberStock}`] = maximumNumber;
+        return shopObj;
     }
 }
-const a = obj["listOfStores"]();
-console.log(a);
-
-
-/*
-stocks - остатки товара в регионе,
-34 - номер региона,
-2, 3, 4, ... 176 - номера магазинов региона,
-"2": "35" означает, что в магазине 2 товар в наличии в количестве 356 штук
-Необходимо написать на JavaScript три метода:
-
-получить название товара
-получить массив номеров магазинов, в которых есть товары в наличии
-найти максимальное количество товара в регионе, вернуть это количество и номер магазина
-Операции чтения и записи из файла можно опустить - объект можно сразу положить в переменную.*/
+console.log(obj["productName"]());
+console.log(obj["listOfStores"]());
+console.log(obj["maxProduct"]());
