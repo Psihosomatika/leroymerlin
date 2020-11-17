@@ -49,6 +49,7 @@ const obj =
     "maxProduct": function() {
         let maximumNumber = 0;
         let numberStock = 0;
+        const shopObj = {};
         const shops = this["stock"]["stocks"]["34"];
         for(let keys in shops){
             if (maximumNumber < Number(shops[keys])){
@@ -56,11 +57,10 @@ const obj =
                 numberStock = keys;
             };
         };
-        const shopObj = {};
         shopObj[`${numberStock}`] = maximumNumber;
         return shopObj;
     }
 }
-console.log(obj["productName"]());
-console.log(obj["listOfStores"]());
-console.log(obj["maxProduct"]());
+console.log(obj["productName"]());//название товара
+console.log(obj["listOfStores"]());//все магазины региона, в которых присутствует товар
+console.log(obj["maxProduct"]());//метод позволяет выбрать магазин с максимальным количеством товара. 
